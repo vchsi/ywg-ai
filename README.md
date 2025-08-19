@@ -1,4 +1,4 @@
-# YWG.ai #
+# ⌚ YWG.ai #
 ### Your watch expert, now in AI ###
 
 YWG.ai (Your Watch Guy) uses AI to find the best selection of watches for you to buy or gift. Through learning your preferences through a few quick, easy surveys, YWG's servers can compile a easy-to-read report contaning all the data you need to purchase.
