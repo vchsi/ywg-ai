@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Watch Guy</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="ywg_initial_survey.js"></script>
+    <script src="process_prompt.js"></script>
+    <script src="request_script.js"></script>
+    <script src="headerandfooter.js"></script>
+    <link rel="stylesheet" href="universal_style_sheet.css">
+    <style src="">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #brand, #features {
+            margin-bottom: 20px;
+        }
+        input[type="text"], select {
+            width: 200px;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        input.big-input {
+            width:75%;
+            height: 30px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input.small-number-input {
+            width: 50px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .collapsible-content {
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        h1.collapsible-title:hover , h2.collapsible-title:hover , h3.collapsible-title:hover  {
+            cursor: pointer;
+        }
+        .collapsible-title:hover {
+            color: #d39519;
+        }
+        .half-left, .half-right {
+            width: 40%;
+            display: inline-block;
+            vertical-align: top;
+            
+        }
+  
+        .half-center {
+            width: 4%;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        #prompt-debug {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button-text:hover {
+            color: #d39519;
+        }
+        .button-text.step0-content {
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        .searchbox-panel {
+            margin-bottom: 10px;
+        }
+        .searchbox {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-output {
+            margin-top: 10px;
+            background-color: #f9f9f9;
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+        }
+        .feature-item.button-text {
+            cursor: pointer;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+        .selected{
+            color:crimson
+        }
+        .additional-feature-selector {
+            margin-bottom: 10px;
+            display: none;
+
+        }
+        .hover-info-mark {
+            color: #007bff;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .hover-info {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .hover-info:hover {
+            display: block;
+        }
+        /* popup styles */
+        #popup-container{
+            position: fixed;
+            z-index: 100;
+            height: 120vh;
+            background-color: rgba(0, 0, 0, 0.492);
+            width: 103vw;
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+            transform: translate(-2.5vw, -10vh);
+        }
+        #popup-body{
+            transform: translateY(-5vh);
+            align-self: center;
+            width: 45vw;
+            height: auto;
+            border: 2px black solid;
+            box-shadow: 2px 3px 2px 3px rgba(113, 113, 113, 0.859);
+            justify-self: center;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: whitesmoke;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+        #popup-body > *{
+            flex-grow: 1;
+
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        #popup-body > p{
+            flex-grow: 2;
+            margin-top: 0;
+            text-align: center;
+        }
+        #popup-body > h1{
+            margin-bottom: 0;
+        }
+        #popup-body > button{
+            margin-bottom: 10px;
+            margin-top: 5px;
+            max-height: 6vh;
+            width: 10vw;
+        }
+        #popup-content{
+            margin-left: 10px;
+        }
+        #show-help-popup{
+            border-radius: 10px;
+            background-color: #00aaff;
+        }
+        #show-help-popup:hover{
+            background-color: #007bff;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="popup-container">
+        <div id="popup-body">
+            <h1 id="popup-title">Welcome to YWG.ai</h1><br>
+            <div id="popup-content"><b>We're glad you're here!</b> This is our initial survey, where you can tell us what you want in your watch. At the end of this, we'll learn:
+                <ol>
+                    <li>The make/model of the watch you desire (or not, if you're undecided/don't know)</li>
+                    <li>Your budget, and how much you're willing to overspend to purchase your ideal watch.</li>
+                    <li>Any additional information or special requests you want us to know to compile the perfect list.</li>
+                </ol>
+                <p><b>Remember, you can always skip questions that you don't know (unless noted). </b>Anyways, if you're stuck later on, press help to see this menu again!</p>
+            </div>
+            <button id="close-popup">Close</button>
+        </div>
+    </div>
+    <div id="header" style="text-align: center; margin-bottom: 20px;">
+        <h1 style="margin-bottom: 0">⌚ Welcome to Your Watch Guy ⏱️</h1>
+        <h3>Your watch expert, now in AI.</h3>
+    </div>
+    
+    <h1><button id="show-help-popup">Need Help?</button>  <span id="step">Step 0)</span> </h1>
+
+    <div id="step0">
+        <div class="three-segments" style="width: 90%; margin: 20px auto;">
+            <div class="half-left">
+                <h2 class="button-text step0-content" id="step0-choice1">Have a Specific Model in Mind?</h2>
+            </div>
+            <div class="half-center">
+                <h1>or</h1>
+            </div>
+            <div class="half-right">
+                <h2 class="button-text step0-content disabled" id="step0-choice2"><span style="text-decoration: line-through">Need Help Choosing a Watch?</span> (coming soon)</h2>
+            </div>
+        </div>
+    </div>
+
+    <div id="step1-option1" style="display: none;">
+        <div id="brand" class="half-left">
+            <h2>Brand</h2>
+            <p>Enter the brand / make of your watch: (optional)</p>
+            <input type="text" id="watchBrandInput" placeholder="e.g., Rolex, Seiko, etc.">
+        </div>
+        <div id="model" class="half-right">
+            <h2>Model</h2>
+            <p>Enter the model of your desired watch (if you know; optional field):</p>
+            <input type="text" id="watchModelInput" placeholder="e.g., MoonSwatch, Oyster Perpetual, etc.">
+        </div>
+        <div class="extra">
+            <h2>Additional Details (Optional)</h2>
+            <p>If you don't know <i>exactly</i> what watch you're considering, you can type in your desires here.</p>
+            <input type="text" id="additionalInfo" placeholder="35mm width, automatic only, etc." class="big-input">
+        </div>
+    </div>
+    
+    <div id="step1-option2" style="display: none;">
+        <h2>Select Watch Features</h2>
+        <div class="searchbox-panel" id="feature-search">
+            <input id="feature-search-box" class="searchbox" type="text" placeholder="Search for features..." oninput="filterFeatures()" onfocus="showSearchResults()">
+            <div id="feature-search-display" class="search-output">
+                <ul id="feature-list">
+                    <li class="feature-item button-text" data-feature="wr-slider">Water Resistance</li>
+                    <li class="feature-item button-text" data-feature="date-disp">Date Display</li>
+                    <li class="feature-item button-text" data-feature="accuracy-slider">Accuracy</li>
+                    <li class="feature-item button-text" data-feature="date">Tourbillion</li>
+                    <li class="feature-item button-text" data-feature="band-type">Band Type</li>
+                    <li class="feature-item button-text" data-feature="lug-width">Lug Width</li>
+                    <li class="feature-item button-text" data-feature="lug-to-lug">Lug to Lug</li>
+                </ul>
+            </div>
+        </div>
+        <div id="features" class="collapsible" >
+            <div class="collapsible-panel">
+                <h2 class="collapsible-title">Essential Features</h2>
+            </div>
+            <div class="collapsible-content">
+                <div id="default-features">
+                    <label>
+                        Movement
+                        <div id="movement">
+                            <select id="movementType">
+                                <option value="automatic">Automatic</option>
+                                <option value="manual">Manual Hand-Wind</option>
+                                <option value="quartz">Quartz</option>
+                                <option value="solar">Solar</option>
+                                <option value="specific">Specific (textbox)</option>          
+                            </select>
+                            <input type="text" id="specificMovement" placeholder="Enter specific movement type" style="display:none;">
+                        </div>
+                    </label>
+                    <br>
+                    <div>
+                        Styles you're interested in: <i>(Choose any that apply)</i><br>
+                        <label>
+                            <input type="checkbox" name="feature" value="chronograph" text="Chronograph">
+                            Chronograph
+                        </label>
+                        <label>
+                            <input type="checkbox" name="feature" value="divers" text="Dive Style">
+                            Dive Style
+                        </label>
+                        <label>
+                            <input type="checkbox" name="feature" value="dress" text="Dress Style">
+                            Dress
+                        </label>
+                        <label>
+                            <input type="checkbox" name="feature" value="field" text="Field Style">
+                            Field 
+                        </label>
+                        <label>
+                            <input type="checkbox" name="feature" value="pilot" text="Pilot Style">
+                            Pilot
+                        </label>
+                        <label>
+                            <input type="checkbox" name="feature" value="smartwatch" text="Smartwatch">
+                            Smartwatch
+                        </label>
+                    </div>
+                    <br>
+                </div>
+                <label>
+                    <input type="checkbox" name="feature" value="waterproof" text="Waterproof">
+                    Waterproof
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" name="feature" value="date" text="Date Display">
+                    Date Display
+                </label>
+            </div>
+        </div>
+        <div id="extra-features" class="collapsible">
+            <div class="collapsible-panel">
+                <h2 class="collapsible-title">Additional Features</h2>
+            </div>
+            <div class="collapsible-content">
+                <div id="shown-features">
+                    <h3>Select more with the search box, or add a custom feature</h3>
+                    <div data-feature="wr-slider" class="additional-feature-selector">
+                        <label>
+                            Water Resistance
+                            <input type="range" id="wr-slider" min="30" max="300" value="50">
+                            <input type="number" id="wr-value" min="30" value="50"> meters<br>
+                            <span class="feature-description">Water resistance level in meters.</span>
+                            <p>Common: 30-50 m, dress watch; 50-100 m, everyday; 100-200 m, sports; 200+ m, diver;</p>
+                        </label>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="step2" style="display: none;">
+        <div id="special-requests" class="collapsible" style="">
+            <h2 class="collapsible-title">Special Requests (click to open)</h2>
+            <div class="collapsible-content">
+                <p>Do you have any specific requests or additional information about the watch you want to buy?</p>
+                <textarea id="specialRequests" rows="4" cols="50" placeholder="Must be Swiss Chronometer Certified, include box and papers, etc."></textarea>
+            </div>
+        </div>
+    </div>
+    <div id="step3" style="display: none;">
+        <h2>Reviewing the Cost</h2>
+        <div id="review">
+            <div class="half-left">
+                <label for="cost-value-lowerbound">Estimated Cost: <span class="currency-mark">$</span></label>
+                <input type="number" id="cost-value-lowerbound" class="small-number-input" min="100" value="100"> USD<br>
+                <span class="feature-description">Lower bound of the estimated cost of the watch.</span>
+            </div>
+            <div class="half-right">
+                <label for="cost-value-upperbound">Estimated Cost: <span class="currency-mark">$</span></label>
+                <input type="number" id="cost-value-upperbound" class="small-number-input" min="100" value="500"> USD<br>
+                <span class="feature-description">Upper bound of the estimated cost of the watch.</span>
+            </div>
+            <div class="pricing-strategy">
+                <h3>Pricing Flexibility (select) <span class="pricing-strategy hover-info-mark">(?)</span></h3>
+                <div class="pricing-strategy hover-info">
+                    <ol>
+                        <li>Strict: No flexibility, all choices must stay within the specified range.</li>
+                        <li>Moderate: Some flexibility allowed, can go slightly above or below the range.</li>
+                        <li>Flexible: Significant flexibility, can exceed the range if justified.</li>
+                    </ol>
+                </div>
+                <select id="pricingStrategy">
+                    <option value="strict">Strict</option>
+                    <option value="moderate">Moderate (Highly Preferable)</option>
+                    <option value="flexible">Flexible</option>
+                </select>
+            </div>
+        </div>
+        <h3>Cost summary: <span id="cost-range" style="color: red;">(enter price range with inputs)</span></h3>
+    </div>
+    <div id="step4" style="display: none;">
+        <h2>Finalizing Your Watch</h2>
+        <p>Click the button below to submit your watch details and get a personalized recommendation.</p>
+        <button id="submitWatchToServer">Submit Watch Details  ➤</button>
+    </div>
+    <div id="prompt-submission" style="margin-top: 20px; display: none">
+        <button id="submitFormButton">Continue →</button>
+    </div>
+    <div id="result" style="margin-top: 20px; font-weight: bold;">
+        <p id="submitText" class="initially-hidden">Click the button to submit your watch details and move ont.</p>
+        
+        <div id="prompt-debug" class="initially-hidden">
+            <h2>Prompt Debugging</h2>
+            <p id="prompt-text">Hello. </p>
+        </div>
+    </div>
+    <footer style="text-align: center; margin-top: 20px;">
+        <hr style="width: 80%; margin: 0 auto; border-color: #ccc;">
+        <p>&copy; 2025 Your Watch Guy. All rights reserved.</p>
+        <p id="footer-id"></p>
+        <span><button id="restartButton">🔄 Start Over</button> &nbsp     |     &nbsp <button id="id-login">🔑 Access another ID</button></span>
+    </footer>
+</body>

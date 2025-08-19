@@ -1,0 +1,85 @@
+input[type="text"], select {
+    width: 200px;
+    padding: 5px;
+    margin-top: 5px;
+}
+input.big-input {
+    width:75%;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input.small-number-input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.form-part{
+    display: none;
+}
+.initially-hidden {
+    display: none;
+}
+.adjacent-radio-buttons-set{
+    display: inline-block;
+    width: auto;
+}
+.adjacent-label{
+    display: inline-block;
+    padding: 10px;
+}
+.adjacent-radio-buttons-set input[type="radio"],
+.adjacent-radio-buttons-set label.adjacent-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.hidden-input{
+    display: none;
+}
+.custom-selector-input > span{
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+.custom-selector-input{
+    padding: 10px;
+}
+.custom-selector-input-title{
+    display: block;
+    margin-top: 10px; margin-bottom: 20px;
+}
+.custom-selector-input > .selected {
+    border: 1px #000000 solid;
+    background-color: #2d8df5;
+    color: white;
+}
+.custom-selector-input > span:hover {
+    cursor: pointer;
+}
+.grid-div{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: auto;
+}
+
+#customer-desire-sentence{
+    width: 90%;
+    height: 40px;
+    margin: 10px;
+    font-size: medium;
+}
+textarea{
+    font: Arial;
+    font-size: small;
+}

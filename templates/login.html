@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <document charset="UTF-8">
+        <title>Your Watch Guy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery-3.7.1.min.js"></script>
+        <script src="request_script.js"></script>
+        <script src="headerandfooter.js"></script>
+        <script>
+            document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"; // Clear any existing ID cookie
+            function submitLogin() {
+                var idInput = document.getElementById("idInput").value;
+                postData("/api/loginwithid", {id: idInput}).then(function(response) {
+                    if(response.status === "success") {
+                        // Redirect to the results page with the new ID
+                        document.cookie = "id=" + idInput + "; path=/"; // Set cookie for ID)
+                        window.location.href = "/results";
+                    } else {
+                        alert("Login failed: " + response.message);
+                        console.log(response);
+                    }
+                });
+                
+            }
+        </script>
+        <link rel="stylesheet" href="universal_style_sheet.css">
+    </head>
+    <body>
+        <div id="header" style="text-align: center; margin-bottom: 20px;">
+            <h1 style="margin-bottom: 0">⌚ Welcome to Your Watch Guy ⏱️</h1>
+            <h3>Your watch expert, now in AI.</h3>
+        </div>
+        <h1>Login</h1>
+        <form id="loginForm" action="javascript:submitLogin()" method="post">
+            <label for="idInput">Enter your ID:</label>
+            <input type="text" id="idInput" name="id" required class="small-number-input">
+            <button type="submit" class="blue-button">🔑 Login</button>
+        </form>
+        <footer style="text-align: center; margin-top: 20px;">
+            <hr style="width: 80%; margin: 0 auto; border-color: #ccc;">
+            <p>&copy; 2025 Your Watch Guy. All rights reserved.</p>
+        </footer>
+</html>

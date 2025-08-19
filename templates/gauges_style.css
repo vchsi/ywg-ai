@@ -1,0 +1,544 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    --body-bg: #fAfAfA;
+    background: var(--body-bg);
+    font-family: sans-serif;
+    margin: 15px;
+}
+
+.grid-3c{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 30px;
+    margin: 10px;
+}
+
+
+.ranking-circle{
+    border-radius: 50%;
+    border: gold 2px solid;
+    padding: 20px;
+    background-color: goldenrod;
+    width: 50px !important;
+}
+
+.ranking-circle.silver{
+    border: rgb(180, 180, 180) 2px solid;
+    background-color: rgb(161, 161, 161);
+}
+.ranking-circle.bronze{
+    border: rgb(250, 167, 43) 2px solid;
+    background-color: rgb(198, 128, 7);
+}
+
+.ranking-circle > .ranking{
+    font-size: 30pt;
+    font-weight: bold;
+    color: white;
+}
+
+
+
+
+.static-score-gauge{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px black solid;
+    background-color: white;
+}
+.static-score-gauge > .gauge_cover_bottom{
+    z-index: 2;
+    background-color: var(--body-bg);
+    width: 100%;
+    height: 15%;
+    transform: translateY(150%);
+}
+.static-score-gauge > .static-score-gauge-score > .top{
+    font-size: 25pt;
+}
+
+.static-score-gauge-score{
+    transform: translateY(10%);
+}
+.circular-gauge {
+    position: relative;
+    width: 18vw;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: conic-gradient(#00aaff 0deg, #ddd 0deg 180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    rotate: 270deg;
+    min-width: 120px;
+    min-height: 120px;
+    max-width: 200px;
+    max-height: 200px;
+}
+/* Image Carousel Styles */
+.watch-image-carousel {
+
+}
+.watch-image-carousel > img{
+    max-width: 25vw;
+    min-width: 12vw;
+    min-height: 15vh;
+    max-height: 45vh;
+
+}
+.watch-image-carousel > img.shown-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.watch-image-carousel > img.hidden-image {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+.watch-image-carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+.watch-image-carousel-controls .carousel-control {
+    background-color: #00aaff;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 15%;
+    font-weight: bolder;
+    font-size: 15px;
+}
+.watch-image-carousel-controls .carousel-control:hover {
+    background-color: #0088cc;
+}
+
+
+.circular-gauge::before {
+    content: "";
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.gauge__text {
+    position: relative;
+    z-index: 2;
+    font-size: 1.7em;
+    color: #333;
+    rotate: 90deg;
+    transform: translateY(-10%);
+    text-align: center;
+}
+
+.gauge__descr {
+    font-size: 1rem;
+    margin: 1px;
+    color: #333;
+    text-transform: uppercase;
+    display: block;
+    transform: translateY(10%);
+    max-width: 95%;
+    text-align: center;
+}
+
+.circular-gauge > .gauge_cover_bottom {
+    z-index: 2;
+    background: var(--body-bg);
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    rotate: 90deg;
+    transform: translateY(125%);
+}
+/* Numerical Meter Stylesheet */
+.numerical-meter-container{
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    align-items: center;
+    text-align: center;
+    
+}
+.numerical-meter-container > h3{
+    flex-grow: 1;
+    padding:  10px ;
+    font-size: 1.8rem;
+    font-weight: 100;
+}
+.numerical-meter-container > .left{
+    text-align: right;
+    flex-basis: 10px;
+}
+.numerical-meter-container > .right{
+    text-align: left;
+    flex-basis: 10px;
+}
+.numerical-meter-container > .numerical-meter{
+    flex-grow: 7;
+    padding: inherit 10px;
+    border: 1px black solid;
+    height: 55%;
+    position: relative;
+}
+.numerical-meter{
+    min-height: 55px;
+    min-width: 55vw;
+}
+.numerical-meter > .numerical-meter-marker{
+    border: black 1px solid;
+    border-top: 0;
+    height: 100%;
+    border-bottom: 0;
+    position: absolute;
+    opacity: 0.9;
+}
+.numerical-meter-marker.market-range{
+    background-color: #ffb700;
+    z-index: 2;
+}
+.numerical-meter-marker.customer-range{
+    background-color: #00aaff;
+    z-index: 1;
+}
+.numerical-meter > .msrp{
+    position: absolute;
+    z-index: 3;
+    color: rgb(255, 0, 0);
+    transform: translate(100%, -65%);
+    font-size: 24pt;
+}
+.numerical-meter > .overflow-bar{
+
+    opacity: 0.2;
+
+}
+.numerical-meter > .msrp:hover{
+    cursor: pointer;
+}
+
+.numerical-meter-popup {
+    position: absolute;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    z-index: 10;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* Collapsible Box Styles */
+.collapsible-box-container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 10px;
+}
+.collapsible-box-container > .collapsible-box-title{
+    display: flex;
+    flex-direction: row;
+}
+.collapsible-box-title:hover{
+    cursor: pointer;
+}
+.collapsible-box-title > *{
+    flex-grow: 0;
+    font-size: 1.5rem;
+}
+.collapsible-box-title > .title-content{
+    flex-basis: 80%
+}
+.collapsible-box-title > .attr-score{
+    align-self:flex-end;
+    text-align: right;
+    flex-grow: 1;
+}
+.collapsible-box-title > .open-close-icon{
+    flex-basis: 3%;
+    padding-right: 10px;
+}
+.collapsible-box-content{
+    font-size: 1.15rem;
+    border: 0.5px black solid;
+    padding: 8px;
+    margin-top: 4px;
+}
+
+.watch-status-bar{
+    display: flex;
+    width: 55%;
+    padding: 5px 10px !important;
+    align-items: center;
+    flex-direction: row;
+
+}
+.watch-status-bar > *{
+    flex-grow: 1;
+    font-size: 16pt;
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-family: Helvetica;
+
+}
+.watch-status-bar > .watch-price{
+    align-self: center;
+}
+.watch-status-bar > .movement{
+    text-align: center;
+}
+
+.watch-status-bar > .release-year{
+    text-align: right;
+}
+
+
+.report-heading{
+    flex-grow: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.report-heading > .ranking-container{
+    flex-grow: 1;
+}
+.report-heading > .basic-info-container{
+    flex-grow: 9;
+    padding-left: 15px;
+}
+.report-heading > .basic-info-container > .watch-status-bar{
+    width: 85%;
+}
+.report-heading > .fit-rating-container{
+    flex-grow: 1;
+}
+.report-paragraph{
+    display: flex;
+    flex-direction: row;
+
+}
+.report-paragraph > *{
+    padding: 10px;
+    margin: 0 10px;
+    flex-grow: 1;
+}
+.report-paragraph > .watch-paragraph{
+    flex-grow: 7;
+    font-size: 1.4vw;
+    max-width: 65%;
+}
+ul > .list-title{
+    margin-bottom: 5pt;
+}
+
+/* Attribute-Value pair */
+.attr-value-pair{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 5px 0;
+}
+.attr-value-pair > .attr{
+    flex-grow: 1;
+    font-weight: normal;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+.attr > .attr-legend{
+    font-size: 1.2rem;
+    padding-right: 5px;
+}
+.attr-value-pair > .value{
+    flex-grow: 1;
+    font-size: 1.3rem;
+    margin-top: 5px;
+    color: #555;
+    font-weight: 500;
+    font-family: Helvetica;
+    margin-left: 15px;
+}
+
+/* Report Styles */
+
+.watch-report{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.report-header{
+    width: 100%;
+    margin: 0;
+}
+.report-header > p{
+    margin:2px;
+    text-align: center;
+    font-weight: 500;
+    color: #555;
+    font-family: sans-serif;
+}
+.watch-stats-container{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.watch-stats-container > .analysis-title{
+    align-self: flex-start;
+}
+.stats-flex-grid-row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-left: 10px;
+    align-items: center;
+}
+.stats-flex-grid-row > *{
+    flex-grow: 1;
+    flex-basis: 20%;
+    font-size: 1.2rem;
+    padding: 5px;
+    text-align: center;
+}
+.stats-flex-grid-row > .attr-value-pair:hover{
+    border: 2px solid rgb(233, 200, 139);
+}
+.stats-flex-grid-row > .attr-value-pair{
+    border: 1px solid #ccc;
+    margin: 10px;
+    background-color: #ececec;
+}
+.report-gauges-container{
+    margin-top: 20px;
+}
+
+.report-gauges{
+    column-gap: 6vw;
+    margin-bottom: 0;
+}
+
+.report-attribute-analysis, .report-pricing-analysis{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 10px;
+    margin: 5px;
+    margin-bottom: 10px;
+}
+.report-attribute-analysis > *{
+    margin-left: 15px;
+}
+.report-attribute-analysis > .analysis-content{
+    width: 95%;
+    margin-bottom: 15px;
+}
+.analysis-title{
+    margin-left: 1px;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+}
+.report-pricing-analysis-header{
+    flex-direction: row;
+    flex-basis: 100%;
+    display: flex;
+    width: 96.5%;
+}
+.report-pricing-analysis-header > .analysis-title{
+    flex-grow: 1;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    font-size: 1.7rem;
+}
+.report-pricing-analysis-header > .price-score{
+    align-self: flex-end;
+    flex-grow: 1;
+    text-align: right;
+    color: yellow;
+}
+.report-pricing-analysis > .report-pricing-analysis-main-container{
+    width: 100%;
+    margin-top: 10px;
+}
+.report-pricing-analysis-main-container > h3{
+    font-size: 1.25rem;
+    margin: 5px 15px;
+}
+.report-pricing-analysis-main-container > .numerical-meter-container{
+}
+
+.pricing-info{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+.pricing-info > *{
+    flex-grow: 1;
+    flex-basis: 20%;
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+.msrp-pair{
+    flex-basis: 10% !important;
+}
+.report-pricing-analysis-main-container > .pricing-explanation{
+    width: 85%;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    padding: 5px;
+    color: #555;
+}
+.pricing-explanation > .collapsible-box-title > .open-close-icon{
+    flex-basis: 10px;
+    flex-grow: 0;
+    padding-right: 10px !important;
+}
+.report-conclusion{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+.report-conclusion > .report-conclusion-header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.report-conclusion-header > *{
+    flex-grow: 1;
+}
+.report-conclusion-header > .final-score{
+    align-self: flex-end;
+    text-align: right;
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+.report-conclusion > .report-conclusion-paragraph{
+    width: 100%;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    padding: 20px 10px;
+    color: #343434;
+}

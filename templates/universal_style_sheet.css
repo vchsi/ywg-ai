@@ -1,0 +1,112 @@
+html{
+    min-height: 100%;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+#header > h3 {
+    margin: 0;
+    margin-top: 3px;
+    font-size: 1.2em;
+    color: #2d8df5;
+}
+#header > h1:hover{
+    color: orange;
+    cursor: pointer;
+}
+#restartButton, #id-login, button.blue-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+#restartButton:hover, #id-login:hover, button.blue-button:hover {
+    background-color: #0052aa;
+}
+
+
+button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #218838;
+}
+
+.three-segments {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.half-left, .half-right {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    
+}
+
+h1.centered-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.grey-bordered-box {
+    margin: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 5px;
+}
+
+.no-underline-link {
+    text-decoration: none;
+    color: darkblue;
+    
+}
+.no-underline-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.centered-in-div {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+.survey-question {
+    margin-bottom: 15px;
+}
+.survey-question label {
+    display: block;
+    margin-bottom: 5px;
+}
+input.small-number-input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+footer > p:hover {
+    color: orange;
+    cursor: pointer;
+}
+.initially-hidden{
+    display:none;
+}
+
+
+/* disabled button */
+.disabled{
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed !important;
+}
+.disabled:hover{
+    background-color: #ccc !important;
+    color: #666 !important;
+}
+button{
+    border-radius: 5px;
+}

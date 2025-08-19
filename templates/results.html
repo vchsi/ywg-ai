@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Watch Guy</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="request_script.js"></script>
+    <script src="headerandfooter.js"></script>
+    <script>
+        if(document.cookie === undefined || document.cookie === "") {
+            window.location.href = "/"; // Redirect to home page if no cookie is found
+        
+        }
+        curId = document.cookie.split('; ').find(row => row.startsWith('id=')).split('=')[1];
+        if(curId === undefined || curId === "") {
+            window.location.href = "/"; // Redirect to home page if no ID is found
+       
+        }
+        // start unique
+
+        $("#result").text("Request # " + curId);
+        $("#id-span").text(curId);
+        $("#footer-id").text(curId);
+
+        $("#restartButton").click(function() {
+
+            // Reset all steps and data
+            window.location.href = "/"; // Redirect to the main page
+        });
+        $("#id-login").click(function() {
+            window.location.href = "/login.html"; // Redirect to the login page
+        });
+    </script>
+    <link rel="stylesheet" href="universal_style_sheet.css">
+    <link rel="stylesheet" href="preferences_style.css">
+</head>
+<body>
+    <div id="header" style="text-align: center; margin-bottom: 20px;">
+        <h1 style="margin-bottom: 0">⌚ Welcome to Your Watch Guy ⏱️</h1>
+        <h3>Your watch expert, now in AI. (currently serving: id <span id="id-span"></span>)</h3>
+    </div>
+    <div id="main-content" class="grey-bordered-box">
+        <!-- Main content goes here -->
+    </div>
+    <footer style="text-align: center; margin-top: 20px;">
+        <hr style="width: 80%; margin: 0 auto; border-color: #ccc;">
+        <p>&copy; 2025 Your Watch Guy. All rights reserved.</p>
+        <span>
+            <span id="footer-id"></span> &nbsp; | &nbsp;
+            <button id="restartButton">🔄 Start Over</button> &nbsp;|&nbsp;
+            <button id="id-login">🔑 Access another ID</button>
+        </span>
+    </footer>
+</body>

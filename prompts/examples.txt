@@ -1,0 +1,251 @@
+Here is a example of proper input and output:
+
+<EXAMPLE>
+INPUT:
+{
+    "id": 1234,
+    "part1_content": {
+        "Version": "1.0",
+        "watchBrand": "Seiko",
+        "watchModel": "5 Sports SRPE51 'DressKX'",
+        "purchaseDecision": "exact_model",
+        "additionalInfo": "",
+        "specialRequests": "no additional options at this time",
+        "priceRange": {
+            "lowerBound": "150",
+            "upperBound": "295"
+        },
+        "pricingStrategy": "moderate"
+    },
+    "step": 3,
+    "report_generated": false,
+    "part2_content": {
+        "watch_customer_info": {
+            "for": "myself",
+            "occasion": "none"
+        },
+        "watch_customer_history_experience": {
+            "customer_is_into_watches": "yesIntoWatches",
+            "customer_owns_a_previous_watch_collection": "noOwnedWatches"
+        },
+        "watch_report_features": {
+            "undefined": "",
+            "isSmartwatch": false,
+            "wr_minimum_100": true,
+            "accurate": false,
+            "how_long_it_lasts": true,
+            "durability": true,
+            "outfitVersatility": true,
+            "diveCapable": false,
+            "goodValueRetention": true,
+            "strapCapability": false,
+            "modFriendly": true,
+            "lowMaintenance": false,
+            "authorizedDealerNetwork": false
+        },
+        "additional_requests_for_report": {
+            "customer-desire-sentence": "I want a watch which would be easy to wear everyday and cheap and efficient to run.",
+            "additional_things_to_include_on_report": ""
+        }
+    }
+
+},
+
+OUTPUT:
+{   
+    "id": 1234,
+    "output": [
+        "1": {   
+            "watch_brand": "Seiko",
+            "watch_model": "5 Sports SRPE51 'DressKX'",
+            "basic_info": {
+                "movement": "Automatic (Seiko 4R36)",
+                "release_date": "2020",
+                "dress_category": ["everyday", "diver"],
+                "discontinued": "false"
+            },
+            "watch_stats": {
+                "wr_rating": "100",
+                "material": "stainless steel case, mineral crystal",
+                "diameter": "40",
+                "lug_to_lug": "44.2",
+                "lug_width": "20",
+                "oem_bracelet_strap": "bracelet, stainless steel"
+            },
+            "watch_fit_criteria": {
+                "watch_fit_ranking": "1",
+                "watch_fit_score": "85",
+                "watch_fit_report": "The Seiko SRPE51 'DressKX' is a strong value proposition in the entry-level automatic watch segment. It blends casual and dressy elements, making it versatile for daily wear. Durability and ease of maintenance are standout strengths. It’s not a collector’s item in terms of value growth, but it holds its worth well on the secondhand market. One of its few weaknesses is the limited presence of authorized repair centers, and its moderate power reserve.",
+                "watch_fit_conclusion": "Overall, the Seiko 5 Sports SRPE51 'DressKX' fits the specifications very well, offering excellent durability, versatility, and ease of maintenance at a reasonable price—making it a strong choice for everyday wear despite minor trade-offs in power reserve and authorized service access. "
+            },
+            "watch_fit_gauges": {
+                "versatility": {
+                    "score": "8",
+                    "explanation": "This watch is very good in terms of being versatile for different outfits."
+                },
+                "water_resistance": {
+                    "score": "9",
+                    "explanation": "The watch's 100m water resistance rating is very good for everyday use. Swimming, hand wash, rain will not be a problem."
+                },
+                "durability": {
+                    "score": "10",
+                    "explanation": "Seiko's 4R36 movement is well known for being a workhorse. Also, movement replacement are inexpensive, and easily avilable."
+                },
+                "battery": {
+                    "score": "5",
+                    "explanation": "While 42 hours is a good power reserve for a automatic watch of this price point, this is often below average and requires constant care to keep up to tick."
+                },
+                "value_retention": {
+                    "score": "6",
+                    "explanation": "While the DressKX is not particularly valuable, and will not go up in value, Seikos tend to hold their value well to a extent on secondhand markets. This means that it will sell consistently for a decent price."
+                }
+                }
+            },
+            "pricing": {
+                "customer_price_lower_bound": "150",
+                "customer_price_upper_bound": "295",
+                "pricing_strategy": "moderate",
+                "low_average_price": "150",
+                "high_average_price": "295",
+                "msrp": "295",
+                "score": "7",
+                "fits_customer_bounds": "true",
+                "pricing_explanation": "This watch holds constant value well, but is not shown to increase above MSRP any time soon."
+            }
+        }
+    ]
+}
+
+
+</EXAMPLE>
+
+Notice how only values which match these values (
+
+1. `"wr_minimum_100"` -> `"water_resistance"`
+2. `"how_long_it_lasts"` -> `"battery"`
+3. `"durabiilty"` -> `"durability"`
+4. `"outfitVersatility"` -> "versatility"
+5. `"goodValueRetention"` -> `"value_retention"`
+6. `"lowMaintenance"` -> `"servicability"`
+7. `"authorizedDealerNetwork"` -> `"ad_strength"`)
+
+are shown in the gauges. Nothing else (not modFriendly)
+
+---
+Here is another example for reference.
+<EXAMPLE>
+INPUT: 
+{
+    "id": 1950,
+    "part1_content": {
+        "Version": "1.0",
+        "watchBrand": "Seiko",
+        "watchModel": "",
+        "purchaseDecision": "exact_model",
+        "additionalInfo": "I want a small seiko 5 diver. I have a 6 inch wrist, and don't want to look silly wearing a oversized watch.",
+        "specialRequests": "Blue dial preferred. New preferred.",
+        "priceRange": {
+            "lowerBound": "100",
+            "upperBound": "200"
+        },
+        "pricingStrategy": "flexible"
+    },
+    "step": 3,
+    "report_generated": true,
+    "part2_content": {
+        "watch_customer_info": {
+            "for": "myself",
+            "occasion": "none"
+        },
+        "watch_customer_history_experience": {
+            "customer_is_into_watches": "yesIntoWatches",
+            "customer_owns_a_previous_watch_collection": "noOwnedWatches"
+        },
+        "watch_report_features": {
+            "undefined": "",
+            "isSmartwatch": false,
+            "wr_minimum_100": true,
+            "accurate": true,
+            "how_long_it_lasts": true,
+            "durability": true,
+            "outfitVersatility": true,
+            "diveCapable": true,
+            "goodValueRetention": false,
+            "strapCapability": true,
+            "modFriendly": false,
+            "lowMaintenance": false,
+            "authorizedDealerNetwork": false
+        },
+        "additional_requests_for_report": {
+            "customer-desire-sentence": "",
+            "additional_things_to_include_on_report": ""
+        }
+    }
+}
+
+OUTPUT:
+{
+    "id": 1950,
+    "output": [
+        {
+            "watch_brand": "Seiko",
+            "watch_model": "5 Sports SKX Sports Style Mid-Size",
+            "watch_ref_no": "SRPK33",
+            "basic_info": {
+                "movement": "Automatic (Seiko 4R36)",
+                "release_date": "2023",
+                "dress_category": ["everyday", "diver"],
+                "discontinued": "false"
+            },
+            "watch_stats": {
+                "wr_rating": "100",
+                "material": "stainless steel case, mineral crystal",
+                "diameter": "38",
+                "lug_to_lug": "44.2",
+                "lug_width": "20",
+                "oem_bracelet_strap": "bracelet, stainless steel"
+            },
+            "watch_fit_criteria": {
+                "watch_fit_ranking": 1,
+                "watch_fit_score": 92,
+                "watch_fit_report": "For your specific needs, the Seiko 5 Sports SRPK33, part of the new SKX Sports Style Mid-Size collection, is an excellent recommendation. You're looking for a small Seiko 5 diver with a blue dial for your 6-inch wrist, and this model delivers perfectly. At 38mm in diameter, it's ideally proportioned for smaller wrists, ensuring it won't look oversized. It features a striking blue dial, directly addressing your color preference, and being a current production model, it is readily available new. \n\nWhile its MSRP is slightly above your initial price range, your 'flexible' pricing strategy allows for this, especially considering its newness and the market price often found closer to the upper end of your desired bound. This watch maintains the robust and reliable Seiko 4R36 automatic movement, known for its durability, and offers 100m water resistance, making it genuinely dive-capable for recreational use and perfectly suited for daily wear without concern. ",
+                "watch_fit_conclusion": "The Seiko 5 Sports SRPK33 is an ideal choice, perfectly matching your desire for a small, blue-dialed, new Seiko 5 diver that fits a 6-inch wrist comfortably, offering excellent durability and versatility."
+            },
+            "watch_fit_gauges": {
+                "water_resistance": {
+                    "score": 9,
+                    "explanation": "The 100m water resistance rating is very good, making it suitable for swimming and recreational diving, fulfilling your WR and dive-capable needs."
+                },
+                "battery": {
+                    "score": 6,
+                    "explanation": "The 4R36 movement has a 41-hour power reserve, standard for an automatic at this price, meaning it will run for nearly two days off the wrist."
+                },
+                "durability": {
+                    "score": 9,
+                    "explanation": "With Seiko's robust 4R36 movement and Hardlex crystal, this watch is built to be a reliable workhorse for everyday wear."
+                },
+                "versatility": {
+                    "score": 8,
+                    "explanation": "Its classic diver design with a vibrant blue dial offers high versatility, easily transitioning from casual to smart-casual outfits."
+                }
+            },
+            "pricing": {
+                "customer_price_lower_bound": 100,
+                "customer_price_upper_bound": 200,
+                "pricing_strategy": "flexible",
+                "low_average_price": 200,
+                "high_average_price": 260,
+                "msrp": 295,
+                "score": 9,
+                "fits_customer_bounds": true,
+                "pricing_explanation": "While the MSRP is $295, street prices often fall closer to the $200-$260 range. Given your 'flexible' pricing strategy, this watch fits, providing excellent value for a new, purpose-built Seiko 5 Sports model."
+            }
+        }
+    ]
+}
+</EXAMPLE>
+
+This example does a good job in particular catering to the customers needs, as well as their price point. Even though the original range was 100-200, they were FLEXIBLE, so the SRPK33's range fits. 
+
+---
+Below is the customer's actual prompt:

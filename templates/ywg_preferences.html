@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's get to know you a bit better!</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="request_script.js"></script>
+    <script src="headerandfooter.js"></script>
+
+    <script src="ywg_preferences.js"></script>
+    <link rel="stylesheet" href="universal_style_sheet.css">
+    <link rel="stylesheet" href="preferences_style.css">
+</head>
+<body>
+    <div id="header" style="text-align: center; margin-bottom: 20px;">
+        <h1 style="margin-bottom: 0">⌚ Welcome to Your Watch Guy ⏱️</h1>
+        <h3>Your watch expert, now in AI. (currently serving: id <span id="id-span"></span>)</h3>
+    </div>
+    <div id="main-content" class="grey-bordered-box" >
+        
+        <div id="part0" class="form-part">
+            <div class="centered-in-div">
+                <h1 class="centered-title">Let's get to know you a bit better!</h1>
+                <p style="text-align: center;">We'll use this information to personalize our report to your needs. Most questions are optional unless stated.<br>Make sure your answers are final since you can't go back.</p>
+                <button id="startButton">Start →</button>
+
+            </div>
+        </div>
+        <div id="part1" class="form-part">
+            <div class="centered-in-div">
+                <h2>Part 1) Getting to Know You</h2>
+                <div class="survey-question">
+                    <p>What/who are you buying this watch for? Any formal occasion or special someone?</p>
+                    <label for="watchIsFor">Who is this watch for?</label>
+                    <select id="watchIsFor" name="watchIsFor" onselect="toggleOtherInput()">
+                        <option value="myself">Myself</option>
+                        <option value="gift">Gift</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="initially-hidden" id="watchIsForGift">
+                        <input type="text" id="watchIsForGiftInput" name="watchIsForGiftInput" placeholder="Who's it for? (Recommended but not required)" style="width: 50%; margin-top: 10px; margin-bottom: 10px">
+                    </div>
+                    <div class="initially-hidden include-close-button" id="watchIsForOther">
+                        <input type="text" id="watchIsForOtherInput" name="watchIsForOtherInput" placeholder="Please elaborate... (if not, you can close this)" style="width: 80%; margin-top: 10px; margin-bottom: 10px">
+                    </div>
+                </div>
+                <div class="survey-question">
+                    <label for="watchIsForOccasion">What's the special occasion?</label>
+                    
+                    <select id="watchIsForOccasion" name="watchIsForOccasion">
+                        <option value="none">Just on a whim.</option>
+                        <option value="birthday">Birthday</option>
+                        <option value="anniversary">Anniversary</option>
+                        <option value="graduation">Graduation</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="initially-hidden include-close-button" id="watchIsForOtherOccasion">
+                        <input type="text" id="watchIsForOtherOccasionInput" name="watchIsForOtherOccasionInput" placeholder="Would you mind telling me a bit more?... (if not, you can close this)" style="width: 90%; margin-top: 10px; margin-bottom: 10px">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div id="part2" class="form-part">
+            <div class="centered-in-div">
+                <h2>Part 2) What <span id="switchable-p2">do you</span> know about watches?</h2>
+                Suggested questions: Do you have a watch collection? What do you want in a watch? (water resistance); If you know, describe their taste in a sentence; 
+                <div class="survey-question">
+                    <span>
+                        <span class="custom-selector-input-title">Are you into watches?</span>
+                        <span id="intoWatchesInput" class="hidden-input">noIntoWatches</span>
+                        <span class="custom-selector-input" id="intoWatches">
+                            
+        
+                            <span id="noIntoWatches" class="selected choice" value="no">No</span>
+                            <span id="somewhatIntoWatches" class="choice" value="somewhat">Somewhat</span>
+                            <span id="yesIntoWatches" class="choice" value="yes">Yes! (deep)</span>
+            
+                        </span>
+                    </span>
+                    
+                </div>
+                <div class="survey-question">
+                    <label for="previousWatchCollection">Do you currently own a watch collection (think 2+ watches)?</label>
+                    <div id="previousWatchCollection" class="adjacent-radio-buttons-set">
+                        <p id="previousWatchCollectionInput" class="hidden-input">noOwnedWatches</p>
+                        <input type="radio" name="ownedPreviousWatch" value="yesOwnedWatches" >
+                        <label for="yesOwnedWatches" class="adjacent-label">Yes!</label>
+                        
+                        <input type="radio" name="ownedPreviousWatch" value="noOwnedWatches" checked>
+                        <label for="noOwnedWatches" class="adjacent-label">No.</label>
+                    </div>
+                    <div id="stateOfCollection" class="include-close-button initially-hidden" style="margin-top: 15px; border: #d0cfcfba solid 1px !important;">
+                        <p>How many watches do you have in your collection?</p>
+                        <input type="number" id="ownedNumberOfWatches" class="small-number-input">
+                        <p>Try describing your watch collection in a few sentences.</p>
+                        <textarea id="watchCollectionOverview"></textarea>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- part 3: -->
+        <div id="part3" class="form-part">
+            <div class="centered-in-div">
+                <h2>Part 3) What <span id="switchable-p2">do you</span> want in a watch?</h2>
+                <p>Select all of the following features you would like for this watch. <br> (will be included in the report)</p>
+
+                <div class="survey-question" id="features-checkbox-grid">
+                    
+                </div>
+            </div>
+        </div>
+        <div id="part4" class="form-part">
+            <div id="results" class="centered-in-div">
+                <h2>Part 4) The Bigger Picture</h2>
+                <p>If you could describe your ideal watch in one or two sentences (150 characters max), how would you? (optional)</p>
+                <div class="survey-question">
+                    
+                    <input id="customer-desire-sentence" name="customer-desire-sentence" placeholder="(optional)" maxlength="150">
+                    <label for="customer-desire-sentence">150 characters remaining</label>
+                </div>
+                <p>Anything else we should include in your report? (Optional)</p>
+                <div class="survey-question">
+                    <textarea id="additional-concerns-text" maxlength="250" placeholder="Enter your concerns here. (max 250 characters)" style="width: 80%; min-height: 50%;"></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="continueButton" class="centered-in-div initially-hidden">
+            <button id="startButton">Continue →</button>
+        </div>
+        <div id="submitButton" class="centered-in-div initially-hidden">
+            <hr style="width: 80%; margin: 0 auto; border-color: #ccc;">
+            <p>Click the button to submit your watch details and see the result.</p>
+            <button id="submitResult">Submit and Get your Report! ➤</button>
+        </div>
+        <div id="loading">
+
+        </div>
+    </div>
+    <footer style="text-align: center; margin-top: 20px;">
+        <hr style="width: 80%; margin: 0 auto; border-color: #ccc;">
+        <p>&copy; 2025 Your Watch Guy. All rights reserved.</p>
+        <span><span id="footer-id"></span>  &nbsp  |    &nbsp  <button id="restartButton">🔄 Start Over</button>     &nbsp|       &nbsp   <button id="id-login">🔑 Access another ID</button></span>
+    </footer>
+</body>
+</html>

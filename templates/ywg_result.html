@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Watch Guy</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="request_script.js"></script>
+     <script src="headerandfooter.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+     <script src="ywg_result.js"></script>
+    <style>
+        #loading-box, #report-box{
+            border: 1px #000000 solid;
+            background-color: #eee;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #report-box > a{
+            margin-bottom: 20px;
+        }
+        #report-box{
+            display: flex;
+            flex-direction: column;
+        }
+        #report-box > *{
+            width: 300px;
+            height: auto;
+            max-height: 50px;
+            margin-top: 10px;
+        }
+        .link-p{
+            color: blue;
+        }
+        .link-p:hover{
+            text-decoration: underline;
+            cursor:pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="universal_style_sheet.css">
+</head>
+<body>
+    <div id="header" style="text-align: center; margin-bottom: 20px;">
+        <h1 style="margin-bottom: 0">⌚ Welcome to Your Watch Guy ⏱️</h1>
+        <h3>Your watch expert, now in AI. (currently serving: id <span id="id-span"></span>)</h3>
+    </div>
+    <h1>Results:</h1>
+    <div id="result-container" style="margin: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+        <p id="result">Loading...</p>
+        <div id="watch-container">
+            <h2>
+                <span id="watch-brand"></span> <span id="watch-model"></span> <br>special requests: (<span id="additional-requests"></span>)
+            </h2>
+           
+        </div>
+    </div>
+    <footer style="text-align: center; margin-top: 20px;">
+        <hr style="width: 80%; margin: 0 auto; border-color: #ccc;">
+        <p>&copy; 2025 Your Watch Guy. All rights reserved.</p>
+        <span><span id="footer-id"></span>  &nbsp  |    &nbsp  <button id="restartButton">🔄 Start Over</button>     &nbsp|       &nbsp   <button id="id-login">🔑 Access another ID</button></span>
+    </footer>
+</body>
+</html>

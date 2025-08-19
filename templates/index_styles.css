@@ -1,0 +1,154 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+    scrollbar-gutter: stable both-edges;
+    display: flex;
+    flex-direction: column;
+    
+}
+#header{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 97vw;
+    justify-items: space-between;
+    margin: 10px;
+    margin-top: 0;
+    z-index: 1;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#header > *{
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 10px;
+}
+#header > .title{
+    align-self: flex-start;
+    text-align: left;
+    margin-left: 30px;
+}
+.index-section-title{
+    margin-top: 29px;
+    margin-bottom: 0;
+}
+#header > .index-section-title:hover, #header > * > .index-section-title:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    text-decoration-color: #00aaff;
+}
+.index-section-title.selected{
+    text-decoration: underline;
+    text-decoration-color: red;
+}
+a.no-show-link{
+    color: inherit;
+    text-decoration: none;
+}
+
+.dropdown-content{
+   
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 15vw;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+    background-color: #eeeeee;
+    position: absolute;
+}
+
+.dropdown-content > button{
+    max-width: 100%;
+}
+.dropdown-content > .login-button{
+    background-color: #00aaff;
+}
+.dropdown-content > .login-button{
+    background-color: #0094df;
+}
+
+#index-part-1{
+    z-index: 1;
+}
+
+#index-part-1 > .main-box{
+    margin-top: 3vh;
+    margin: 15px;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    text-align: center;
+    align-self: center;
+    height: 45vh;
+    width: auto;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    /* background-image: url("/resources/index_banner.png"); */
+    background-color: #727272;
+    color: white;
+}
+.main-box{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: #727272 solid 2px;
+}
+.main-box > *{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-grow: 1;
+}
+#main-box-title{
+    font-size: 3.2em;
+    font-family: Lucida Handwriting, cursive;
+}
+.less-bold-h2{
+    font-weight: 100;
+}
+.secondary-box, .tertiary-box{
+    width: 80%;
+    border-radius: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.498);
+    margin: 15px;
+    padding: 5vh;
+    padding-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    background-color: #eeeeee;
+    box-shadow: 1px 1.5px 1px 1.5px rgb(113 113 113 / 47%);
+}
+#secondary-descr{
+    
+    margin-top: 15px;
+    max-width: 40vw;
+}
+.secondary-box > .side-content{
+    max-width: 40vw;
+    flex-grow: 1;
+    margin-top: 5vh;
+}
+.stacked-text{
+    margin-top: inherit;
+    margin-bottom: inherit;
+}
+.stacked-text > *{
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.tertiary-box{
+    justify-self: flex-end;
+    padding-top: 8vh;
+    padding-bottom: 8vh;
+    flex-direction: column;
+}
+.tertiary-box > *{
+}
+
+footer{
+    margin-bottom: 5px;
+}

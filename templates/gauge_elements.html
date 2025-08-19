@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YWG Report Elements</title>
+  <link rel="stylesheet" href="gauges_style.css">
+  <link rel="stylesheet" href="universal_style_sheet.css">
+  <!-- Temporary -->
+   <link rel="stylesheet" href="ywg_report_style.css">
+   <!-- Everything else can stay -->
+  <script src="jquery-3.7.1.min.js"></script>
+  <script src="gauges_script.js"></script>
+</head>
+<body>
+<h1>Report Elements Test</h1>
+    <h2>Ranking Circles (class: ranking-circle, ranking-circle silver)</h2>
+    <div class="grid-3c">
+        <div class="ranking-circle">
+            <span class="ranking">
+                #1
+            </span>
+        </div>
+        <div class="ranking-circle silver">
+            <span class="ranking">
+                #2
+            </span>
+        </div>
+    </div>
+    <h2>Static Score Gauge (class: static-score-gauge)</h2>
+    <div class="grid-3c">
+        <div class="static-score-gauge" id="fitScore">
+            <div class="static-score-gauge-score">
+                <span class="top"></span><br>
+                <span class="bottom">/ 100</span>
+            </div>
+            <div class="gauge_cover_bottom"></div>
+        </div>
+        
+        <div class="static-score-gauge" id="fitScore3">
+            <div class="static-score-gauge-score">
+                <span class="top"></span><br>
+                <span class="bottom">/ 100</span>
+            </div>
+            <div class="gauge_cover_bottom"></div>
+        </div>
+    </div>
+    
+    <h2>Circular Score Gauge (class: circular-gauge)</h2>
+    <div class="grid-3c">
+        
+
+        <div class="circular-gauge" id="versGauge">
+            <div class="gauge__text">
+                <div class="gauge__value" id="gaugeValue"><span class="gauge__value__span" id="test_val"></span></div>
+
+                <div class="gauge__descr">Versatility</div>
+            </div>
+            <div class="gauge_cover_bottom"></div>
+        </div>
+         <div class="circular-gauge" id="valGauge">
+            <div class="gauge__text">
+            <div class="gauge__value" id="gaugeValue"><span class="gauge__value__span" id="test_val"></span></div>
+            <div class="gauge__descr">Value</div>
+            </div>
+            <div class="gauge_cover_bottom"></div>
+        </div>
+    </div>
+    <h2>
+        Watch Details Bar (class: watch-status-bar)
+    </h2>
+    <div class="grey-bordered-box watch-status-bar">
+        <div class="watch-price">🏷 $350</div>
+        <div class="movement">⚙️ Auto (4r36)</div>
+        <div class="release-year">📅 2020</div>
+    </div>
+    <div class="grey-bordered-box watch-status-bar">
+        <div class="watch-price">🏷 $250</div>
+        <div class="movement">⚙️ Solar Quartz (Citizen Eco-Drive)</div>
+        <div class="release-year">📅 Circa 2019</div>
+    </div>
+    <h2>Two-Way Numerical Meter (class: numerical-meter-container)</h2>
+    <div class="numerical-meter-container"  id="test-meter">
+        <h3 class="left">$150</h3>
+        <div class="numerical-meter">
+            <div class="numerical-meter-marker customer-range" data-value="customer-range"></div>
+            <div class="numerical-meter-popup initially-hidden" data-popup="customer-range-popup"></div>
+            <div class="numerical-meter-marker market-range" data-value="market-range"></div>
+            <div class="numerical-meter-popup initially-hidden" data-popup="market-range-popup"></div>
+            <div class="numerical-meter-marker overflow-bar initially-hidden"></div>
+            <div class="msrp" data-value="msrp">&#9660</div>
+            <div class="numerical-meter-popup initially-hidden" data-popup="msrp-popup"></div>
+        </div>
+        <h3 class="right">$350</h3>
+    </div>
+    <div class="numerical-meter-container"  id="test-meter-2">
+        <h3 class="left"></h3>
+        <div class="numerical-meter">
+            <div class="numerical-meter-marker customer-range" data-value="customer-range"></div>
+            <div class="numerical-meter-popup initially-hidden" data-popup="customer-range-popup"></div>
+            <div class="numerical-meter-marker market-range" data-value="market-range"></div>
+            <div class="numerical-meter-popup initially-hidden" data-popup="market-range-popup"></div>
+            <div class="numerical-meter-marker overflow-bar initially-hidden"></div>
+            <div class="msrp" data-value="msrp">&#9660</div>
+            <div class="numerical-meter-popup initially-hidden" data-popup="msrp-popup"></div>
+        </div>
+        <h3 class="right"></h3>
+    </div>
+    <!-- Collapsible Box (include class collapsible-box-container -> 
+        collapsible-box-title[onClick="collapseCollapsible(this)"] ->
+            span.open-close-icon: Starts at &#9660, changes to &#9654 when collapsed
+            span.title-content: Title of the collapsible box
+            span.attr-score: Score of the attribute, e.g., "8/10". Color-coded based on score (green, orange, red)
+        collapsible-box-content)
+     
+    -->
+    <h2>Collapsible Box (class: collapsible-box-container)</h2>
+    <div class="collapsible-box-container">
+        <div class="collapsible-box-title", onclick="collapseCollapsible(this)">
+            <span class="open-close-icon">&#9660</span>
+            <span class="title-content">Water Resistance</span>
+            <span class="attr-score" style="color: green;">8/10</span>
+        </div>
+        <div class="collapsible-box-content">
+            <p>The 100m water resistance rating is very good, making it suitable for swimming and recreational diving, fulfilling your WR and dive-capable needs.</p>
+        </div>
+    </div>
+    <div class="collapsible-box-container">
+        <div class="collapsible-box-title", onclick="collapseCollapsible(this)">
+            <span class="open-close-icon">&#9660</span>
+            <span class="title-content">Durability</span>
+            <span class="attr-score" style="color: orange;">4/10</span>
+        </div>
+        <div class="collapsible-box-content">
+            <p>While Seikos are currently known for being durable, 4R36 movements are relatively new and have little experience under their belts (unlike the more popular and older 7S26 model).</p>
+        </div>
+    </div>
+</body>

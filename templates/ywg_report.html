@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your YWG Report</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="request_script.js"></script>
+    <script src="headerandfooter.js"></script>
+    <script src="ywg_report.js"></script>
+
+    <link rel="stylesheet" href="universal_style_sheet.css">
+    <link rel="stylesheet" href="ywg_report_style.css">
+
+    <link rel="stylesheet" href="gauges_style.css">
+    <link rel="stylesheet" href="universal_style_sheet.css">
+    <script src="gauges_script.js"></script>
+    <script src="initiate_report.js"></script>
+</head>
+<body>
+    <div id="header" style="text-align: center; margin-bottom: 20px;">
+        <h1 style="margin-bottom: 0">⌚ Welcome to Your Watch Guy ⏱️</h1>
+        <h3>Your watch expert, now in AI. (currently serving: id <span id="id-span"></span>)</h3>
+    </div>
+    <div id="main-content" class="grey-bordered-box" >
+        <div class="button-panel">
+            <button id="backButton" class="back-button" onclick="window.location='/results'">⬅️ Back</button>
+            <button id="liveChatButton" class="live-chat-button">💬 Discuss with YWG.live (coming soon)</button>
+        </div>
+        <div class="grey-bordered-box watch-report initially-hidden" id="sample-report">
+            <div class="report-header">
+                <p class="report-watermark">ywg report - id#<span class="cur-id-watermark">3555</span></p>
+            </div>
+            <div class="report-heading">
+                <div class="ranking-container">
+                    <div class="ranking-circle">
+                        <span class="ranking">
+                            #1
+                        </span>
+                    </div>
+                </div>
+                <div class="basic-info-container">
+                    <h1 class="title">
+                        Seiko 5 Sports 'DressKX' <span class="watch-ref-no">(ref no. SRPE51)</span>
+
+                    </h1>
+                    <div class="grey-bordered-box watch-status-bar">
+                        <div class="watch-price">🏷 $295</div>
+                        <div class="movement">⚙️ Auto (Seiko 4r36)</div>
+                        <div class="release-year">📅 2020</div>
+                    </div>
+                    
+                </div>
+                <div class="fit-rating-container">
+                    <div class="static-score-gauge" id="fitScore2">
+                        <div class="static-score-gauge-score">
+                            <span class="top"></span><br>
+                            <span class="bottom">/ 100</span>
+                        </div>
+                        <div class="gauge_cover_bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="report-paragraph">
+                <div class="watch-image-container">
+                    <div class="watch-image-carousel" data-num-images="2" data-cur-image="0">
+                        <img src="resources/placeholder.png" width="95%" data-image-no="0" class="shown-image">
+                        <img src="resources/placeholder2.png" width="95%" data-image-no="1" class="hidden-image sample">
+                    </div>
+                    <div class="watch-image-carousel-controls">
+                        <button class="carousel-control" onclick="changeImage(this, -1)">←</button>
+                        <button class="carousel-control" onclick="changeImage(this, 1)">→</button>
+                    </div>
+                </div>
+                <p class="watch-paragraph">
+                    The Seiko 5 Sports SRPE51 'DressKX' is an exceptional choice for your brother's first automatic watch, perfectly aligning with his desire for a smooth sweeping motion. It meets your requirement for a 40mm watch, ensuring a comfortable fit. This model is renowned for being easy to own and wear, making it an ideal entry point into mechanical watches. Its standard lug width also makes it very strap-friendly, allowing for easy customization.
+                </p>
+                <ul class="watch-categories">
+                    <h3 class="list-title">Watch Categories</h3>
+                </ul>
+                <div class="blank-space">
+
+                </div>
+            </div>
+            <div class="watch-stats-container">
+                <h2 class="analysis-title" style="text-align: left;">Watch Highlights and Specifications</h2>
+                <div class="stats-flex-grid-row">
+                    <div class="attr-value-pair" data-stat="wr_rating">
+                        <h2 class="attr"><span class="attr-legend" style="color: #00aaff">💧</span>Water Resistance</h2>
+                        <h3 class="value">m</h3>
+                    </div>
+                    <div class="attr-value-pair" data-stat="material">
+                        <h2 class="attr"><span class="attr-legend" style="color: #00aaff" >🕖</span>Material</h2>
+                        <h3 class="value"></h3>
+                    </div>
+                    <div class="attr-value-pair" data-stat="diameter">
+                        <h2 class="attr"><span class="attr-legend" style="color: black">📐</span>Case Diameter</h2>
+                        <h3 class="value">mm</h3>
+                    </div>
+                </div>
+                <div class="stats-flex-grid-row">
+                    <div class="attr-value-pair" data-stat="lug_to_lug">
+                        <h2 class="attr"><span class="attr-legend">📏</span>Lug-to-Lug </h2>
+                        <h3 class="value">mm</h3>
+                    </div>
+                    <div class="attr-value-pair" data-stat="lug_width">
+                        <h2 class="attr"><span class="attr-legend">⌚</span>Strap Width</h2>
+                        <h3 class="value">mm</h3>
+                    </div>
+                    <div class="attr-value-pair" data-stat="fit_wrist_size">
+                        <h2 class="attr"><span class="attr-legend">👋</span>Great Fit For</h2>
+                        <h3 class="value"></h3>
+                    </div>
+                </div>
+                <div class="stats-flex-grid-row">
+                    <div class="attr-value-pair" data-stat="oem_bracelet_strap">
+                        <h2 class="attr"><span class="attr-legend"></span>Included Bracelet / Strap</h2>
+                        <h3 class="value"></h3>
+                    </div>
+                </div>
+            </div>
+            <hr style="width: 75%; margin: 0 auto; border-color: #dbdbdb; z-index: 10;">
+            <div class="report-gauges-container">
+                <div class="report-gauges grid-3c">
+                    <div class="circular-gauge sample">
+                        <div class="gauge__text">
+                            <div class="gauge__value" id="gaugeValue"><span class="gauge__value__span" id="test_val"></span></div>
+                            <div class="gauge__descr" data-to="wr-analysis">sample (use changeGauge())</div>
+                        </div>
+                        <div class="gauge_cover_bottom"></div> <!-- DO NOT TOUCH THIS! -->
+                    </div>  
+                </div>
+            </div>
+            <hr style="width: 75%; margin: 0 auto; border-color: #dbdbdb; z-index: 10;">
+            <div class="report-attribute-analysis">
+                <h2 style="text-align: left;" class="analysis-title">Analysis</h2>
+                
+                <div class="collapsible-box-container analysis-content sample">
+                    <div class="collapsible-box-title", onclick="collapseCollapsible(this)">
+                        <span class="open-close-icon">&#9654</span>
+                        <span class="title-content">Sample</span>
+                        <span class="attr-score" style="color: green;">x/10</span>
+                    </div>
+                    <div class="collapsible-box-content initially-hidden">
+                        <p></p>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="report-pricing-analysis">
+                <div class="report-pricing-analysis-header">
+                    <h2 style="text-align: left" class="analysis-title">Price / Budget</h2>
+                    <h2 class="price-score">6/10</h2>
+                </div>
+                
+                <div class="report-pricing-analysis-main-container">
+                    <h3>- Price Gauge (hover over me for more info)</h3>
+                    <div class="numerical-meter-container" id="test-meter-3">
+                        <h3 class="left"></h3>
+                        <div class="numerical-meter">
+                            <div class="numerical-meter-marker customer-range" data-value="customer-range"></div>
+                            <div class="numerical-meter-popup initially-hidden" data-popup="customer-range-popup"></div>
+                            <div class="numerical-meter-marker market-range" data-value="market-range"></div>
+                            <div class="numerical-meter-popup initially-hidden" data-popup="market-range-popup"></div>
+                            <div class="numerical-meter-marker overflow-bar initially-hidden"></div>
+                            <div class="msrp" data-value="msrp">&#9660</div>
+                            <div class="numerical-meter-popup initially-hidden" data-popup="msrp-popup"></div>
+                        </div>
+                        <h3 class="right"></h3>
+                    </div>
+                    <div class="pricing-info">
+                        <div class="attr-value-pair customer-range-pair">
+                            <h2 class="attr" onmouseover="clarifyValue(this, true, '#00aaff', 1)" onmouseout="clarifyValue(this, false, '#00aaff', 1)" data-value="customer-range"><span class="attr-legend" style="color: #00aaff">⬤</span><span class="attr-text">Your Range (flexible)</span></h2>
+                            <h3 class="value">$100 - $200</h3>
+                        </div>
+                        <div class="attr-value-pair market-range-pair">
+                            <h2 class="attr" onmouseover="clarifyValue(this, true, 'orange', 2)" onmouseout="clarifyValue(this, false, 'orange', 2)" data-value="market-range"><span class="attr-legend" style="color: orange">⬤</span><span class="attr-text">SRPE51 Market Range</span></h2>
+                            <h3 class="value">$200 - $250</h3>
+                        </div>
+                        <div class="attr-value-pair msrp-pair">
+                            <h2 class="attr" onmouseover="clarifyValue(this, true, '#00aaff', 4)" onmouseout="clarifyValue(this, false, '#00aaff', 4)" data-value="msrp"><span class="attr-legend" style="color: green">⬤</span><span class="attr-text">MSRP</span></h2>
+                            <h3 class="value">$295</h3>
+                        </div>
+                        <div class="attr-value-pair overflow-pair">
+                            <h2 class="attr"><span class="attr-legend" style="color: orange">⬤</span><span class="attr-text">Budget / MR Overlay</span></h2>
+                            <h3 class="value">N/A (Neutral)</h3>
+                        </div>
+                    </div>
+                    <div class="collapsible-box-container pricing-explanation">
+                        <div class="collapsible-box-title", onclick="collapseCollapsible(this)">
+                            <span class="open-close-icon">&#9660</span>
+                            <span class="title-content">Analysis</span>
+                        </div>
+                        <div class="collapsible-box-content">
+                            <p>While the MSRP is $295, the Seiko SRPE51 can frequently be found at street prices from $180-$200 through authorized dealers during sales or from reputable grey market sellers. This allows it to fit within your strict $100-$200 budget, though it will require finding it at the lower end of its common market price.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="report-conclusion">
+                <div class="report-conclusion-header">
+                    <h2 style="text-align: left;" class="analysis-title">Conclusion</h2>
+                    <h2 class="final-score" style="color: green">91/100</h2>
+                </div>
+                <hr style="width: 95%; margin: 0 auto; border-color: #dbdbdb; z-index: 10;">
+                <p class="report-conclusion-paragraph">Overall, the Seiko 5 Sports SRPE51 'DressKX' is an excellent choice for your brother's first automatic watch. It meets all your requirements, including a smooth sweeping motion, a comfortable 40mm size, and a versatile design suitable for various occasions. While it has some limitations in terms of durability, its water resistance and overall value make it a strong contender for his first mechanical watch.</p>
+
+            </div>
+        </div>
+    </div>
+    <footer style="text-align: center; margin-top: 20px;">
+        <hr style="width: 80%; margin: 0 auto; border-color: #ccc;">
+        <p>&copy; 2025 Your Watch Guy. All rights reserved.</p>
+        <span><span id="footer-id"></span>  &nbsp  |    &nbsp  <button id="restartButton">🔄 Start Over</button>     &nbsp|       &nbsp   <button id="id-login">🔑 Access another ID</button></span>
+    </footer>
+</body>
+</html>

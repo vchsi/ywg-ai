@@ -1,0 +1,34 @@
+body{
+    background-color: white !important;
+}
+.watch-report{
+    --body-bg: #f2f2f2;
+    background-color: var(--body-bg);
+    width: 90% !important;
+}
+.watch-ref-no{
+    font-size: 16pt;
+    font-weight: normal;
+}
+.watch-pricing-container{
+    display: inline-block;
+}
+
+
+.button-panel{
+    display: flex;
+    flex-direction: row;
+    
+}
+.button-panel > button{
+    margin: 10px ;
+    margin-bottom: inherit;
+    border-radius: 8px;
+}
+.live-chat-button{
+    background-color: rgb(0, 145, 255);
+}
+.live-chat-button:hover{
+    background-color: rgb(1, 120, 210);
+    cursor: not-allowed;
+}

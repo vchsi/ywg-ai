@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your YWG Report</title>
+        <style>
+            .watch-image.grid{
+                display: grid;
+                grid-template-columns: auto auto auto;
+            }
+        </style>
+        <script>
+            function postData(url = '', data = {}) {
+                // Default options are marked with *
+                return fetch(url, {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'cors', // no-cors, *cors, same-origin
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                        'Content-Type': 'application/json'
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    redirect: 'follow', // manual, *follow, error
+                    referrerPolicy: 'no-referrer', // no-referrer, *client
+                    body: JSON.stringify(data) // body data type must match "Content-Type" header
+                })
+                .then(response => response.json()); // parses JSON response into native JavaScript objects
+            }
+
+            document.addEventListener("DOMContentLoaded", function(){
+                document.getElementById("submit").addEventListener("click", function(){
+                    watchValue = document.getElementById("watch_name").value
+                    if(watchValue.length == 0){
+                        alert("Enter something!")
+                    } else {
+                        result = postData("/submitimagequery", {"watchName": watchValue})
+                        result.then(function(data){
+                            if(data["status"] == "success"){
+                                console.log("success")
+                                resultData = data["result"]
+                                divTag = document.getElementById("watch-image-grid")
+                                divTag.innerHTML = "" // Clear previous results
+                                console.log(resultData)
+                                for(const [title, dataValues] of Object.entries(resultData)){
+                                    newTag = document.createElement("div")
+                                    newImg = document.createElement("img")
+                                    console.log(title)
+                                    console.log(dataValues)
+                                    newImg.src = dataValues[0]
+                                    newImg.width = 150
+                                    newImg.height = 150
+                                    newTitle = document.createElement("p")
+                                    newTitle.innerHTML = title
+                                    newTag.appendChild(newImg)
+                                    newTag.appendChild(newTitle)
+                                    divTag.appendChild(newTag)
+                                }
+                            } else {
+                                alert(data["result"])
+                            }
+                        })
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <input id="watch_name" placeholder="Enter Watch Name">
+        <button id="submit">Submit</button>
+        <div class="watch-image-grid" id="watch-image-grid">
+
+        </div>
+    </body>
+</html>
