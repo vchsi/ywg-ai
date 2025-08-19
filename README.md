@@ -4,14 +4,14 @@
 YWG.ai (Your Watch Guy) uses AI to find the best selection of watches for you to buy or gift. Through learning your preferences through a few quick, easy surveys, YWG's servers can compile a easy-to-read report contaning all the data you need to purchase.
 
 ---
-## Our techstack ##:
+## Our techstack
 
 YWG.ai uses Google Gemini 2.5flash (through google-genai) and Google Images Search (through google-cse) to create the reports. Front end is handled through traditional JavaScript and JQuery, while the back end uses Flask. 
 
 SQLite is currently being used to store data, but I hope to change it to MYSQL for better performance and scalability.
 
 ---
-## Features ##
+## Features
 
 - Two straightforward surveys determined to gauge user's preferences, interests, budget, and more info.
 - Report recommendation gauged by 10+ different customer preferences, as well as customer's qualitative responses.
