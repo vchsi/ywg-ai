@@ -3,7 +3,6 @@
 
 YWG.ai (Your Watch Guy) uses AI to find the best selection of watches for you to buy or gift. Through learning your preferences through a few quick, easy surveys, YWG's servers can compile a easy-to-read report contaning all the data you need to purchase.
 
-<a href="https://ywgai.pythonanywhere.com">Have a look! (Work in progress, expect lots of bugs)</a> 
 ---
 ## Our techstack ##:
 
@@ -32,4 +31,6 @@ SQLite is currently being used to store data, but I hope to change it to MYSQL f
 ## Sample report ##
 
 <img src="https://ywgai.pythonanywhere.com/resources/sample_report_1.png" width="50%" height="50%">
+
+<a href="https://ywgai.pythonanywhere.com">Have a look! (Work in progress, expect lots of bugs)</a> 
 
